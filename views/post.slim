@@ -1,0 +1,16 @@
+html
+  head
+    title="#{post[:title]} | es test"
+    link[href='/css/site.css' rel='stylesheet' type='text/css']
+  body
+    .container
+      div.header
+        a[href='/blog'] Blog
+      div.blog-post
+        h2=post[:title]
+        div.byline
+          =Time.at(post[:published]).strftime("%Y-%m-%d")
+        div.blog-body
+          img.blog-image[src="#{post[:image]}"]
+          div=post[:body]
+          code=post[:_id]

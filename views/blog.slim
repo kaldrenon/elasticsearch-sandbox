@@ -1,0 +1,20 @@
+html
+  head
+    title blog | es test
+    link[href='/css/site.css' rel='stylesheet' type='text/css']
+  body
+    .container
+      div.header
+        h1 elasticsearch resources test
+        a.search[href="/search"] search
+
+      - posts.documents.each do |post|
+        div.blog-post
+          h2
+            a[href="/blog/#{post[:_id]}"]=post[:title]
+          div.byline
+            =post[:published] ? Time.at(post[:published].to_i).strftime("%Y-%m-%d") : 'unknown'
+          div.blog-body
+            img.blog-image[src="#{post[:image]}"]
+            =post[:teaser]
+
