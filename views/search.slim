@@ -1,0 +1,26 @@
+html
+  head
+    title blog | es test
+    link[href='/css/site.css' rel='stylesheet' type='text/css']
+  body
+    .container
+      div.header
+        h1 elasticsearch resources test
+
+      form[action='/search' method='post']
+        input[type="text" name="search" placeholder="Search" autofocus value="#{search}"]
+        input[type="submit" value="Search"]
+
+      - if results
+        div.results
+          = "Found #{results.documents.count} matching search term"
+          - results.documents.each do |result|
+            div.blog-post
+              h2
+                a[href="/blog/#{result[:_id]}"]=result[:title]
+              div.byline
+                =result[:published] ? Time.at(result[:published].to_i).strftime("%Y-%m-%d") : 'unknown'
+              div.blog-body
+                img.blog-image[src="#{result[:image]}"]
+                =result[:teaser]
+
