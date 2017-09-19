@@ -1,6 +1,6 @@
 html
   head
-    title blog | es test
+    title search | es test
     link[href='/css/site.css' rel='stylesheet' type='text/css']
   body
     .container
@@ -13,14 +13,18 @@ html
 
       - if results
         div.results
-          = "Found #{results.documents.count} matching search term"
-          - results.documents.each do |result|
-            div.blog-post
+          = "Found #{results.count} matching search term"
+          - results.each do |result|
+            - id = result._id
+            - result = result._source
+            article.blog-post
               h2
-                a[href="/blog/#{result[:_id]}"]=result[:title]
+                a[href="/blog/#{id}"]=result.title
               div.byline
-                =result[:published] ? Time.at(result[:published].to_i).strftime("%Y-%m-%d") : 'unknown'
+                = Date.parse(result[:published])
               div.blog-body
-                img.blog-image[src="#{result[:image]}"]
-                =result[:teaser]
-
+                img.blog-image[src="#{result.image}"]
+                = result.teaser
+      - else
+        div
+          No results

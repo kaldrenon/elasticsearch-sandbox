@@ -41,3 +41,15 @@ div {
 .blog-teaser {
   min-height: 150px;
 }
+
+.compose input,
+.compose textarea {
+  display: block;
+  padding: 5px;
+  margin: 10px;
+  width: 400px;
+}
+
+.compose textarea {
+  height: 150px;
+}

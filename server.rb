@@ -49,6 +49,29 @@ end
 # POST /search shows search results
 post "/search" do
   puts params
-  slim :search, locals: { search: params[:search], results: Posts.match(params[:search]) }
+  response = @@es.search(
+    index: 'blog',
+    body: {
+      query: {
+        match: {
+          "_all": params[:search]
+        }
+      },
+      size: 5,
+      sort: :created
+    }
+  )
+  response = Hashie::Mash.new response
+
+  slim :search, locals: { search: params[:search], results: response.hits.hits }
+end
+
+get '/write' do
+  slim :write
+end
+
+post '/write' do
+  puts params
+  slim :write
 end
 

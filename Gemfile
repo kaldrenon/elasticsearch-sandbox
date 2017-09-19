@@ -9,7 +9,6 @@ gem 'slim'
 gem 'hashie'
 
 gem 'cicero'
-gem 'image_suckr'
 
 gem 'aws-sdk'
 gem 'elasticsearch'
