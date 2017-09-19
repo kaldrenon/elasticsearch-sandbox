@@ -16,7 +16,7 @@ html
           h2
             a[href="/blog/#{id}"]=post.title
           div.byline
-            =Date.parse(post[:published])
+            =post[:published]
           div.blog-teaser
             img.blog-image[src="#{post.image}"]
             =post.teaser

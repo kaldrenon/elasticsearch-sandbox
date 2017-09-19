@@ -9,6 +9,7 @@ gem 'slim'
 gem 'hashie'
 
 gem 'cicero'
+gem 'uuid'
 
 gem 'aws-sdk'
 gem 'elasticsearch'

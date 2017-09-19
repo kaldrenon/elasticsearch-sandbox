@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'slim'
 require 'hashie'
-
+require 'uuid'
 require 'aws-sdk'
 require 'faraday_middleware'
 require 'faraday_middleware/aws_signers_v4'
@@ -72,6 +72,22 @@ end
 
 post '/write' do
   puts params
+
+  @@es.create({
+    index: 'blog',
+    type: 'post',
+    id: UUID.new.generate,
+    body: {
+      author: 'Sinatra',
+      body: params[:body],
+      created: Time.now.to_i,
+      image: params[:image],
+      published: Time.now.to_i,
+      teaser: params[:teaser],
+      title: params[:title]
+    }
+  })
+
   slim :write
 end
 

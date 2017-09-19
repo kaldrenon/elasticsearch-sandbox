@@ -9,7 +9,7 @@ html
       div.blog-post
         h2=post[:title]
         div.byline
-          =Date.parse(post[:published])
+          =post[:published]
         div.blog-body
           img.blog-image[src="#{post[:image]}"]
           =post[:body]
