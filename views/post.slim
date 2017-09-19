@@ -5,12 +5,12 @@ html
   body
     .container
       div.header
-        a[href='/blog'] Blog
+        a[href='/'] Home
       div.blog-post
         h2=post[:title]
         div.byline
-          =Time.at(post[:published]).strftime("%Y-%m-%d")
+          =Date.parse(post[:published])
         div.blog-body
           img.blog-image[src="#{post[:image]}"]
-          div=post[:body]
+          =post[:body]
           code=post[:_id]

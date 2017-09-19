@@ -31,6 +31,8 @@ GEM
     faraday_middleware-aws-signers-v4 (0.1.7)
       aws-sdk-resources (~> 2)
       faraday (~> 0.9)
+    hashie (2.0.5)
+    image_suckr (0.2.0)
     jmespath (1.3.1)
     method_source (0.8.2)
     multi_json (1.12.1)
@@ -78,6 +80,8 @@ DEPENDENCIES
   elasticsearch
   faraday_middleware
   faraday_middleware-aws-signers-v4
+  hashie
+  image_suckr
   pry
   pry-coolline
   sinatra

@@ -5,9 +5,11 @@ gem 'pry-coolline'
 gem 'thin'
 gem 'sinatra'
 gem 'sinatra-contrib'
-#gem 'stretcher'
 gem 'slim'
+gem 'hashie'
+
 gem 'cicero'
+gem 'image_suckr'
 
 gem 'aws-sdk'
 gem 'elasticsearch'

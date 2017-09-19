@@ -1,19 +1,26 @@
+body {
+  font-family: sans-serif;
+}
+
+div {
+  display: block;
+}
+
 .byline {
   font-size: 0.9em;
   margin-bottom: 10px;
 }
+
 .container {
   width: 900px;
   margin-left: auto;
   margin-right: auto;
-  height: 100%;
 }
 
 .blog-post {
   display: block;
   margin-bottom: 20px;
   padding: 10px;
-  font-family: sans-serif;
 }
 
 .blog-post h2 {
@@ -28,7 +35,9 @@
 }
 
 .blog-body {
-  width: 100%;
   padding: 5px;
-  height: 140px;
+}
+
+.blog-teaser {
+  min-height: 150px;
 }

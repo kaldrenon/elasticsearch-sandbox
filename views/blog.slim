@@ -5,16 +5,21 @@ html
   body
     .container
       div.header
-        h1 elasticsearch resources test
+        h1 elasticsearch super test
         a.search[href="/search"] search
 
-      - posts.documents.each do |post|
-        div.blog-post
+      - posts.each do |post|
+        - post = post._source
+        article.blog-post
           h2
-            a[href="/blog/#{post[:_id]}"]=post[:title]
+            a[href="/post/#{post._id}"]=post.title
           div.byline
-            =post[:published] ? Time.at(post[:published].to_i).strftime("%Y-%m-%d") : 'unknown'
+            =post[:published] ? Time.at(post.published.to_i).strftime("%Y-%m-%d") : 'unknown'
+          div.blog-teaser
+            img.blog-image[src="#{post.image}"]
+            div Teaser:
+            =post.teaser
           div.blog-body
-            img.blog-image[src="#{post[:image]}"]
-            =post[:teaser]
+            div Body:
+            =post.body
 

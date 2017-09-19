@@ -1,26 +1,23 @@
+
 html
   head
-    title home | es test
+    title blog | es test
+    link[href='/css/site.css' rel='stylesheet' type='text/css']
   body
-    h1 elasticsearch resources test
-    strong Add resource
-    form[action="/" method="post"]
-      input[type="text" name="title" placeholder="Title" autofocus]
-      br
-      textarea[name="body" cols="40" rows="5"]
-      br
-      input[type="submit"]
+    .container
+      div.header
+        h1 elasticsearch super test
+        a.search[href="/search"] search
 
-    hr
+      - posts.each do |post|
+        - id = post._id
+        - post = post._source
+        article.blog-post
+          h2
+            a[href="/blog/#{id}"]=post.title
+          div.byline
+            =Date.parse(post[:published])
+          div.blog-teaser
+            img.blog-image[src="#{post.image}"]
+            =post.teaser
 
-    div
-      Total Results:
-      span=resources.total
-
-    div
-      - resources.documents.each do |doc|
-        h2=doc[:title]
-        div=doc[:teaser]
-    div
-      code
-        =resources
